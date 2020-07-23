@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.Charset;
 
 public class Param {
     public static void main(String[] args) throws Exception {
@@ -202,7 +202,7 @@ public class Param {
                 capacity = 8192;
             }
 
-            final Reader reader = new InputStreamReader(inStream, StandardCharsets.UTF_8);
+            final Reader reader = new InputStreamReader(inStream, Charset.forName("UTF-8"));
             final CharArrayBuffer buffer = new CharArrayBuffer(capacity);
             final char[] tmp = new char[1024];
             int l;
