@@ -5,7 +5,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.parser.Feature;
 import com.liujiazhen.http.param.*;
 import com.liujiazhen.util.RandomUtils;
-import com.shanshoufu.api.util.MessageUtil;
 import com.shanshoufu.api.util.PackageUtil;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -20,14 +19,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class Param {
     public static void main(String[] args) throws Exception {
         String serialNo = RandomUtils.getRandomNumString(32);
         System.out.println("serialNo:" + serialNo);
 
-//        test3101(serialNo); //出票申请
+        test3101(serialNo); //出票申请
 //        test3102(serialNo); //承兑申请
 //        test3103(serialNo); // 提示收票
 //        test3001(serialNo); // 背书申请 DRAFT_ENDORSEMENT
@@ -36,8 +35,8 @@ public class Param {
 //        test3104(serialNo); // 撤票申请
 //        test3106(serialNo); // 保证申请
 //        test3107(serialNo); // 质押申请
-//        test7075(serialNo, "91992664948362801618401807423271"); // 异步查询结果
-
+//        test7075(serialNo, "85615785976491505226586020878525"); // 异步查询结果
+//        test7076(serialNo); // 保证信息查询
 //        test7071(serialNo); // 票据基本信息查询
 //        test7072(serialNo); // 票据正面信息查询
 //        test8001(serialNo); // 额度查询
@@ -70,6 +69,12 @@ public class Param {
     public static void test3102(String serial) throws Exception {
         String param = Tx3102Param.getParam(serial);
         System.out.println("调用3102参数：\n" + param);
+        call(param);
+    }
+
+    public static void test7076(String serial) throws Exception {
+        String param = Tx7076Param.getParam(serial);
+        System.out.println("调用7076参数：\n" + param);
         call(param);
     }
 
@@ -132,6 +137,7 @@ public class Param {
         System.out.println("调用接口3107参数:\n" + param);
         call(param);
     }
+
     public static void test3001(String serial) throws Exception {
         String param = Tx3001Param.getParam(serial);
         System.out.println("调用接口3001参数:\n" + param);
@@ -159,8 +165,11 @@ public class Param {
 
         // 3.调用接口
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+//        CloseableHttpClient httpClient = Demo.getHttpClient(true, true, "D:/tmp/server.pem");
         // 创建POST请求
-        HttpPost httpPost = new HttpPost("http://127.0.0.1:8082/server-connector/recvGateway/service");
+//        HttpPost httpPost = new HttpPost("http://127.0.0.1:8082/server-connector/recvGateway/service");
+//        HttpPost httpPost = new HttpPost("https://localhost/server-connector/recvGateway/service");
+        HttpPost httpPost = new HttpPost("http://172.16.97.28:9084/newhope-connector/recvGateway/service");
         httpPost.addHeader("Content-Type", "application/json");
         StringEntity stringEntity = new StringEntity(paramJson, "utf-8");
         httpPost.setEntity(stringEntity);
@@ -202,7 +211,7 @@ public class Param {
                 capacity = 8192;
             }
 
-            final Reader reader = new InputStreamReader(inStream, Charset.forName("UTF-8"));
+            final Reader reader = new InputStreamReader(inStream, StandardCharsets.UTF_8);
             final CharArrayBuffer buffer = new CharArrayBuffer(capacity);
             final char[] tmp = new char[1024];
             int l;
