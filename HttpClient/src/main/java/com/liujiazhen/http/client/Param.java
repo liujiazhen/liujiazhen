@@ -26,7 +26,7 @@ public class Param {
         String serialNo = RandomUtils.getRandomNumString(32);
         System.out.println("serialNo:" + serialNo);
 
-        test3101(serialNo); //出票申请
+//        test3101(serialNo); //出票申请
 //        test3102(serialNo); //承兑申请
 //        test3103(serialNo); // 提示收票
 //        test3001(serialNo); // 背书申请 DRAFT_ENDORSEMENT
@@ -40,6 +40,8 @@ public class Param {
 //        test7071(serialNo); // 票据基本信息查询
 //        test7072(serialNo); // 票据正面信息查询
 //        test8001(serialNo); // 额度查询
+
+        test3201(serialNo);
     }
 
     public static String get7075Param(String serialNo, String bsuiNo) {
@@ -64,6 +66,12 @@ public class Param {
         jsonObject.put("pkgBody", pkgBody);
 
         return jsonObject.toJSONString();
+    }
+
+    public static void test3201(String serial) throws Exception {
+        String param = Tx3201Param.getParam(serial);
+        System.out.println("调用3201参数：\n" + param);
+        call(param);
     }
 
     public static void test3102(String serial) throws Exception {
@@ -150,26 +158,33 @@ public class Param {
         call(param);
     }
 
+    /**
+     * Http 调用
+     *
+     * @param json 请求Json
+     * @return resultJson
+     * @throws Exception IO异常、加解密异常
+     */
     public static String call(String json) throws Exception {
         // 平台公钥路径
         String ssfPukPath = "F:/key/public-rsa.cer";
         // 调用方私钥路径
         String userCertPath = "F:/key/liuhe-rsa.pfx";
 
-        // 2.参数签名并加密
+        // 1.参数签名并加密
         // (1)要加密的Json (2)调用方私钥证书 (3)私钥密码 (4)平台方公钥
         String encryptWithSign = PackageUtil.encryptAndSign(json, userCertPath, "123456", ssfPukPath);
 
         // 构建请求参数结构
         String paramJson = "{\"appNo\":\"LiuHe000001\",\"context\":\"" + encryptWithSign + "\"}";
 
-        // 3.调用接口
+        // 2.调用接口
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-//        CloseableHttpClient httpClient = Demo.getHttpClient(true, true, "D:/tmp/server.pem");
+//        CloseableHttpClient httpClient = Demo.getHttpClient(true, true, "D:/tmp/server2.crt");
         // 创建POST请求
-//        HttpPost httpPost = new HttpPost("http://127.0.0.1:8082/server-connector/recvGateway/service");
-//        HttpPost httpPost = new HttpPost("https://localhost/server-connector/recvGateway/service");
-        HttpPost httpPost = new HttpPost("http://172.16.97.28:9084/newhope-connector/recvGateway/service");
+//        HttpPost httpPost = new HttpPost("http://127.0.0.1:8082/server-connector/recvGateway/service"); // 本地测试
+//        HttpPost httpPost = new HttpPost("https://localhost/server-connector/recvGateway/service"); // 本地证书测试
+        HttpPost httpPost = new HttpPost("http://obsapi.nhgfc.com:19084/newhope-connector/recvGateway/service"); // 远程测试
         httpPost.addHeader("Content-Type", "application/json");
         StringEntity stringEntity = new StringEntity(paramJson, "utf-8");
         httpPost.setEntity(stringEntity);
@@ -177,25 +192,28 @@ public class Param {
         HttpEntity entity = response.getEntity();
 
         String resultString = entityUtil(entity);
-        System.out.println(resultString);
-        // 4.解密返回值
+        System.out.println("\nHttp调用结果：\n" + resultString + "\n");
+        // 3.解密返回值
         // (1)密文 (2)私钥路径 (3)私钥密码
         String resultJson = PackageUtil.decrypt(resultString, userCertPath, "123456");
-        System.out.println("解密结果：\n" + resultJson);
+        System.out.println("返回值解密结果如下：\n" + resultJson);
 
-        // 5.验证签名
+        // 4.验证签名
         JSONObject resultJsonObject = JSON.parseObject(resultJson, Feature.OrderedField);
         String sign = resultJsonObject.getString("sign");
         String pkg = resultJsonObject.getString("pkg");
         // (1)签名值 (2)原文 (3)平台方公钥
         boolean b = PackageUtil.verifySign(sign, pkg, ssfPukPath);
-        System.out.println("验证签名结果" + b);
+        System.out.println("\n验证签名结果：" + b);
 
+        // 5.结果输出
         JSONObject pkg1 = resultJsonObject.getJSONObject("pkg");
         JSONObject pkgBody = pkg1.getJSONObject("pkgBody");
         JSONObject resPkgHead = pkg1.getJSONObject("resPkgHead");
-        System.out.println(pkgBody.toJSONString());
+        System.out.println("\n应答公共报文头：");
         System.out.println(resPkgHead.toJSONString());
+        System.out.println("应答报文体：");
+        System.out.println(pkgBody.toJSONString());
         return resultJson;
     }
 
