@@ -1,6 +1,5 @@
 package com.liujiazhen.http.client;
 
-
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -18,19 +17,21 @@ import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.util.Arrays;
 
-public class Demo {
-    public static void main(String[] args) {
-
+/**
+ * Https客户端工具类
+ */
+public class HttpsClientUtil {
+    private HttpsClientUtil() {
     }
+
     public static CloseableHttpClient getHttpClient(boolean isHttps, boolean ssl, String certPath) {
         CloseableHttpClient httpClient;
         if (isHttps) {
             SSLConnectionSocketFactory sslSocketFactory;
             try {
                 if (ssl) {
-                    /// 如果需要证书检验的话
+                    // 如果需要证书检验的话
                     // 证书
-//                    InputStream ca = this.getClass().getClassLoader().getResourceAsStream("client/ds.crt");
                     InputStream ca = new FileInputStream(new File(certPath));
                     // 证书的别名，即:key。 注:cAalias只需要保证唯一即可，不过推荐使用生成keystore时使用的别名。
                     String cAalias = System.currentTimeMillis() + "" + new SecureRandom().nextInt(1000);
@@ -39,9 +40,8 @@ public class Demo {
                     /// 如果不作证书校验的话
                     sslSocketFactory = getSocketFactory(false, null, null);
                 }
-
-
             } catch (Exception e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
             httpClient = HttpClientBuilder.create().setSSLSocketFactory(sslSocketFactory).build();

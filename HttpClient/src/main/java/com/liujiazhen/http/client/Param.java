@@ -11,7 +11,6 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.Args;
 import org.apache.http.util.CharArrayBuffer;
 
@@ -26,8 +25,8 @@ public class Param {
         String serialNo = RandomUtils.getRandomNumString(32);
         System.out.println("serialNo:" + serialNo);
 
-//        test3101(serialNo); //出票申请
-//        test3102(serialNo); //承兑申请
+        test3101(serialNo); // 出票申请
+//        test3102(serialNo); // 承兑申请
 //        test3103(serialNo); // 提示收票
 //        test3001(serialNo); // 背书申请 DRAFT_ENDORSEMENT
 //        test3002(serialNo); // 贴现申请
@@ -41,7 +40,7 @@ public class Param {
 //        test7072(serialNo); // 票据正面信息查询
 //        test8001(serialNo); // 额度查询
 
-        test3201(serialNo);
+//        test3201(serialNo); // 收票签收
     }
 
     public static String get7075Param(String serialNo, String bsuiNo) {
@@ -179,12 +178,12 @@ public class Param {
         String paramJson = "{\"appNo\":\"LiuHe000001\",\"context\":\"" + encryptWithSign + "\"}";
 
         // 2.调用接口
-        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-//        CloseableHttpClient httpClient = Demo.getHttpClient(true, true, "D:/tmp/server2.crt");
+//        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+        CloseableHttpClient httpClient = HttpsClientUtil.getHttpClient(true, true, "D:/tmp/server.crt");
         // 创建POST请求
 //        HttpPost httpPost = new HttpPost("http://127.0.0.1:8082/server-connector/recvGateway/service"); // 本地测试
 //        HttpPost httpPost = new HttpPost("https://localhost/server-connector/recvGateway/service"); // 本地证书测试
-        HttpPost httpPost = new HttpPost("http://obsapi.nhgfc.com:19084/newhope-connector/recvGateway/service"); // 远程测试
+        HttpPost httpPost = new HttpPost("https://obsapi.nhgfc.com/connector/recvGateway/service"); // 远程测试
         httpPost.addHeader("Content-Type", "application/json");
         StringEntity stringEntity = new StringEntity(paramJson, "utf-8");
         httpPost.setEntity(stringEntity);

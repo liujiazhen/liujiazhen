@@ -9,7 +9,6 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.Args;
 import org.apache.http.util.CharArrayBuffer;
 
@@ -27,26 +26,33 @@ public class HttpClientDemo {
      *             <artifactId>httpclient</artifactId>
      *             <version>4.5.10</version>
      *         </dependency>
+     * 更新信息：
+     * 1. SSL证书路径
+     * 2. 更改Https客户端
+     * 3. 更改接口地址
+     * 4. parseObject方法增加参数
      */
     public static void main(String[] args) throws Exception {
         // 平台公钥路径
         String ssfPukPath = "F:/key/public-rsa.cer";
         // 调用方私钥路径
         String userCertPath = "F:/key/liuhe-rsa.pfx";
+        // >> SSL证书路径
+        String sslCertPath = "D:/tmp/server.crt";
 
         // 1.构造请求参数 JSON格式
-        String pkgJson = "{\"reqPkgHead\":{\"bsnCode\":\"3101\",\"busiOrg\":\"ssf\",\"appNo\":\"0001\",\"reqTime\":\"20200101\",\"userName\":\"aaaaa\",\"version\":\"1.0.0\",\"serialNo\":\"9999999\"},\"pkgBody\":{\"dueDate\":\"20200601\",\"remark\":\"remark\",\"isseDate\":\"20200601\"}}";
+        String pkgJson = "{\"reqPkgHead\":{\"bsnCode\":\"3101\",\"busiOrg\":\"ssf\",\"appNo\":\"LiuHe0002\",\"reqTime\":\"20200101\",\"userName\":\"aaaaa\",\"version\":\"1.0.0\",\"serialNo\":\"99999991\"},\"pkgBody\":{\"dueDate\":\"20200601\",\"remark\":\"remark\",\"isseDate\":\"20200601\"}}";
         // 2.参数签名并加密
         // (1)要加密的Json (2)调用方私钥证书 (3)私钥密码 (4)平台方公钥
         String encryptWithSign = PackageUtil.encryptAndSign(pkgJson, userCertPath, "123456", ssfPukPath);
 
-        // 构建请求参数结构
-        String paramJson = "{\"appNo\":\"0001\",\"context\":\"" + encryptWithSign + "\"}";
+        // 请求参数Json结构 {"appNo":"xxx...", "context":"xxx..."}
+        String paramJson = "{\"appNo\":\"LiuHe0002\",\"context\":\"" + encryptWithSign + "\"}";
 
-        // 3.调用接口
-        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-        // 创建POST请求
-        HttpPost httpPost = new HttpPost("http://127.0.0.1:8082/server-connector/recvGateway/service");
+        // 3.调用接口 >> 更改为Https客户端(1)isHttps (2)isSSL (3)SSL证书路径
+        CloseableHttpClient httpClient = HttpsClientUtil.getHttpClient(true, true, sslCertPath);
+        // 创建POST请求 >> 更改接口地址
+        HttpPost httpPost = new HttpPost("https://obsapi.nhgfc.com/connector/recvGateway/service");
         httpPost.addHeader("Content-Type", "application/json");
         StringEntity stringEntity = new StringEntity(paramJson, "utf-8");
         httpPost.setEntity(stringEntity);
@@ -60,7 +66,7 @@ public class HttpClientDemo {
         String resultJson = PackageUtil.decrypt(resultString, userCertPath, "123456");
         System.out.println(resultJson);
 
-        // 5.验证签名
+        // 5.验证签名 >> parseObject 方法增加参数 解决验签失败BUG
         JSONObject resultJsonObject = JSON.parseObject(resultJson, Feature.OrderedField);
         String sign = resultJsonObject.getString("sign");
         String pkg = resultJsonObject.getString("pkg");
