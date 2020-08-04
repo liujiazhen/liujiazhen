@@ -48,7 +48,7 @@ public class Tx3101Param {
         pkgBody.put("accptrAcctsvcr", "907651000043"); // 承兑人开户行行号
         pkgBody.put("accptrAcctsvcrName", "新希望财务有限公司"); // 承兑人开户行名称
         pkgBody.put("txlctrctnb", "2020-01912561-001"); // 交易合同号
-        pkgBody.put("busiRemark","this is remark");
+        pkgBody.put("busiRemark","test 3101 出票登记");
 
         pkgBody.put("contractFile","合同文件名（带路径）"); //
         pkgBody.put("invoiceFile","发票文件名（带路径）"); //

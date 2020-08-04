@@ -11,6 +11,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.Args;
 import org.apache.http.util.CharArrayBuffer;
 
@@ -21,11 +22,13 @@ import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 
 public class Param {
+    private static boolean REMOTE;
     public static void main(String[] args) throws Exception {
+        REMOTE = false; // true为测试远程
         String serialNo = RandomUtils.getRandomNumString(32);
         System.out.println("serialNo:" + serialNo);
 
-        test3101(serialNo); // 出票申请
+//        test3101(serialNo); // 出票申请
 //        test3102(serialNo); // 承兑申请
 //        test3103(serialNo); // 提示收票
 //        test3001(serialNo); // 背书申请 DRAFT_ENDORSEMENT
@@ -34,13 +37,14 @@ public class Param {
 //        test3104(serialNo); // 撤票申请
 //        test3106(serialNo); // 保证申请
 //        test3107(serialNo); // 质押申请
-//        test7075(serialNo, "85615785976491505226586020878525"); // 异步查询结果
+//        test7075(serialNo, "22687846859909506668360819823001"); // 异步查询结果
 //        test7076(serialNo); // 保证信息查询
-//        test7071(serialNo); // 票据基本信息查询
+        test7071(serialNo); // 票据基本信息查询
 //        test7072(serialNo); // 票据正面信息查询
 //        test8001(serialNo); // 额度查询
 
 //        test3201(serialNo); // 收票签收
+//        test3204(serialNo); // 承兑签收
     }
 
     public static String get7075Param(String serialNo, String bsuiNo) {
@@ -72,7 +76,11 @@ public class Param {
         System.out.println("调用3201参数：\n" + param);
         call(param);
     }
-
+    public static void test3204(String serial) throws Exception {
+        String param = Tx3204Param.getParam(serial);
+        System.out.println("调用3204参数：\n" + param);
+        call(param);
+    }
     public static void test3102(String serial) throws Exception {
         String param = Tx3102Param.getParam(serial);
         System.out.println("调用3102参数：\n" + param);
@@ -178,12 +186,16 @@ public class Param {
         String paramJson = "{\"appNo\":\"LiuHe000001\",\"context\":\"" + encryptWithSign + "\"}";
 
         // 2.调用接口
-//        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-        CloseableHttpClient httpClient = HttpsClientUtil.getHttpClient(true, true, "D:/tmp/server.crt");
-        // 创建POST请求
-//        HttpPost httpPost = new HttpPost("http://127.0.0.1:8082/server-connector/recvGateway/service"); // 本地测试
-//        HttpPost httpPost = new HttpPost("https://localhost/server-connector/recvGateway/service"); // 本地证书测试
-        HttpPost httpPost = new HttpPost("https://obsapi.nhgfc.com/connector/recvGateway/service"); // 远程测试
+        CloseableHttpClient httpClient;
+        HttpPost httpPost;
+        if (REMOTE) {
+            httpClient = HttpsClientUtil.getHttpClient(true, true, "D:/tmp/server.crt");
+            httpPost = new HttpPost("https://obsapi.nhgfc.com/connector/recvGateway/service"); // 远程测试
+        } else {
+            httpClient = HttpClientBuilder.create().build();
+            httpPost = new HttpPost("http://127.0.0.1:8082/server-connector/recvGateway/service"); // 本地测试
+        }
+
         httpPost.addHeader("Content-Type", "application/json");
         StringEntity stringEntity = new StringEntity(paramJson, "utf-8");
         httpPost.setEntity(stringEntity);
