@@ -26,17 +26,17 @@ public class Tx3204Param {
         reqPkgHead.put("userName", "liujiazhen");
         reqPkgHead.put("busiOrg", "ssf");
 
-        pkgBody.put("draftNo", "136546"); // 票据号码
-        pkgBody.put("reCallNo", "11111111"); // 回复人账号
-        pkgBody.put("reCallName", "张三"); // 回复人名称
-        pkgBody.put("reCallType", "22"); // 回复人类别
-        pkgBody.put("reCallOpenBank", "22222222"); // 回复人开户行行号
-        pkgBody.put("reCallOpenName", "回复人开户行行名"); // 回复人开户行行名
-        pkgBody.put("reCallOrgCode", "ORG"); // 回复人组织机构代码
-        pkgBody.put("bizKind", "ss"); // 业务类型
-        pkgBody.put("revertDate", "20200701"); // 交易签收日期
-        pkgBody.put("signTag", "2"); // 签收标志
-        pkgBody.put("refuseReason", "拒付理由"); // 拒付理由
+        pkgBody.put("draftNo", "190765100004320200612012341055"); // 票据号码
+        pkgBody.put("reCallNo", "0"); // 回复人账号
+        pkgBody.put("reCallName", "新希望财务有限公司"); // 回复人名称
+        pkgBody.put("reCallType", "RC05"); // 回复人类别
+        pkgBody.put("reCallOpenBank", "907651000043"); // 回复人开户行行号
+        pkgBody.put("reCallOpenName", "新希望财务有限公司"); // 回复人开户行行名
+        pkgBody.put("reCallOrgCode", "56717837-9"); // 回复人组织机构代码
+        pkgBody.put("bizKind", "BK03"); // 业务类型
+        pkgBody.put("revertDate", "20200806"); // 交易签收日期
+        pkgBody.put("signTag", "SU00"); // 签收标志
+        pkgBody.put("refuseReason", ""); // 拒付理由
         pkgBody.put("remark", "备注"); // 备注
 
         jsonObject.put("reqPkgHead", reqPkgHead);

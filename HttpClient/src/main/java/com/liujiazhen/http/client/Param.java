@@ -37,14 +37,14 @@ public class Param {
 //        test3104(serialNo); // 撤票申请
 //        test3106(serialNo); // 保证申请
 //        test3107(serialNo); // 质押申请
-//        test7075(serialNo, "22687846859909506668360819823001"); // 异步查询结果
+//        test7075(serialNo, "14110225332656689259290989070194"); // 异步查询结果
 //        test7076(serialNo); // 保证信息查询
-        test7071(serialNo); // 票据基本信息查询
+//        test7071(serialNo); // 票据基本信息查询
 //        test7072(serialNo); // 票据正面信息查询
 //        test8001(serialNo); // 额度查询
 
 //        test3201(serialNo); // 收票签收
-//        test3204(serialNo); // 承兑签收
+        test3204(serialNo); // 承兑签收
     }
 
     public static String get7075Param(String serialNo, String bsuiNo) {

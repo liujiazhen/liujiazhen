@@ -23,18 +23,16 @@ public class Tx3102Param {
         reqPkgHead.put("userName", "liujiazhen");
         reqPkgHead.put("busiOrg", "ssf");
 
-        LocalDateTime of = LocalDateTime.of(2020, 12, 31, 23, 59, 59);
-        String randomNumString = RandomUtils.getRandomNumString(30);
-
-        pkgBody.put("draftNo", randomNumString);
+        pkgBody.put("draftNo", "290765100004320200805013903903");
         pkgBody.put("accptncUcondlconsgnmtmrk", "CC00");
-        pkgBody.put("accptncApplydate", ISO_DATE.format(of));
-        pkgBody.put("accptrRole", "11");
-        pkgBody.put("accptrOrgid", "2222");
+        pkgBody.put("accptncApplydate", "20200806");
+        pkgBody.put("accptrName", "新希望化工投资有限公司");
+        pkgBody.put("accptrRole", "RC01");
+        pkgBody.put("accptrOrgid", "79217138-4");
         pkgBody.put("accptrElctrncSgntr", "0");
-        pkgBody.put("accptrAcctid", "6227001111111111111");
-        pkgBody.put("accptrAcctsvcr", "9001");
-        pkgBody.put("accptrAcctsvcrName", "建设银行");
+        pkgBody.put("accptrAcctid", "100301011000");
+        pkgBody.put("accptrAcctsvcr", "907651000043");
+        pkgBody.put("accptrAcctsvcrName", "新希望财务有限公司");
         pkgBody.put("accptncUcondlprmsmrk", "CC00");
 
         jsonObject.put("reqPkgHead", reqPkgHead);
