@@ -37,14 +37,17 @@ public class Param {
 //        test3104(serialNo); // 撤票申请
 //        test3106(serialNo); // 保证申请
 //        test3107(serialNo); // 质押申请
-//        test7075(serialNo, "14110225332656689259290989070194"); // 异步查询结果
+        test7075(serialNo, "14110225332656689259290989070194"); // 异步查询结果
 //        test7076(serialNo); // 保证信息查询
 //        test7071(serialNo); // 票据基本信息查询
 //        test7072(serialNo); // 票据正面信息查询
 //        test8001(serialNo); // 额度查询
 
 //        test3201(serialNo); // 收票签收
-        test3204(serialNo); // 承兑签收
+//        test3204(serialNo); // 承兑签收
+//        test3206(serialNo); // 保证签收
+//        test3202(serialNo); // 背书签收
+
     }
 
     public static String get7075Param(String serialNo, String bsuiNo) {
@@ -79,6 +82,16 @@ public class Param {
     public static void test3204(String serial) throws Exception {
         String param = Tx3204Param.getParam(serial);
         System.out.println("调用3204参数：\n" + param);
+        call(param);
+    }
+    public static void test3202(String serial) throws Exception {
+        String param = Tx3202Param.getParam(serial);
+        System.out.println("调用3202参数：\n" + param);
+        call(param);
+    }
+    public static void test3206(String serial) throws Exception {
+        String param = Tx3206Param.getParam(serial);
+        System.out.println("调用3206参数：\n" + param);
         call(param);
     }
     public static void test3102(String serial) throws Exception {

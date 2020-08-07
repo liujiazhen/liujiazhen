@@ -23,9 +23,9 @@ public class Tx3103Param {
         reqPkgHead.put("userName", "liujiazhen");
         reqPkgHead.put("busiOrg", "ssf");
 
-        pkgBody.put("draftNo", "154654656"); // 票据号码
+        pkgBody.put("draftNo", "290765100004320191118016731709"); // 票据号码
         pkgBody.put("pyeeRmrkbypropsr", "this is remark备注"); // 提示收票备注
-        pkgBody.put("pyeeApplydate", "20200721"); // 提示收票申请日期
+        pkgBody.put("pyeeApplydate", "20200807"); // 提示收票申请日期
 
         jsonObject.put("reqPkgHead", reqPkgHead);
         jsonObject.put("pkgBody", pkgBody);

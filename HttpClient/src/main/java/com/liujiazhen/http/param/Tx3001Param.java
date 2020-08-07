@@ -23,18 +23,18 @@ public class Tx3001Param {
         reqPkgHead.put("userName", "liujiazhen");
         reqPkgHead.put("busiOrg", "ssf");
 
-        pkgBody.put("draftNo", "321421421"); // 票据号码
-        pkgBody.put("endrsmtDate", "20200723"); // 业务申请日期
-        pkgBody.put("endrsrRole", "12"); // 背书人类别
-        pkgBody.put("endrsrName", "这是背书人名称"); // 背书人名称
-        pkgBody.put("endrsrCmonid", "1214"); // 背书人组织机构代码
-        pkgBody.put("endrsrAcctid", "321421421"); // 背书人账号
-        pkgBody.put("endrsrAcctsvcr", "5546436"); // 背书人开户行行号
-        pkgBody.put("endrsrAcctsvcrname", "这是背书人开户行名称"); // 背书人开户行名称
-        pkgBody.put("endrseeAcctid", "154215"); // 被背书人账号
-        pkgBody.put("endrseeName", "这是被背书人名称"); // 被背书人名称
-        pkgBody.put("endrseeAcctsvcr", "3253532532"); // 被背书人开户行行号
-        pkgBody.put("endrseeAcctsvcrName", "这是被背书人开户行名称"); // 被背书人开户行名称
+        pkgBody.put("draftNo", "290765100004320200805013903903"); // 票据号码
+        pkgBody.put("endrsmtDate", "20200807"); // 业务申请日期
+        pkgBody.put("endrsrRole", "RC01"); // 背书人类别
+        pkgBody.put("endrsrName", "新希望化工投资有限公司"); // 背书人名称
+        pkgBody.put("endrsrCmonid", "79217138-4"); // 背书人组织机构代码
+        pkgBody.put("endrsrAcctid", "100301011000"); // 背书人账号
+        pkgBody.put("endrsrAcctsvcr", "907651000043"); // 背书人开户行行号
+        pkgBody.put("endrsrAcctsvcrname", "新希望财务有限公司"); // 背书人开户行名称
+        pkgBody.put("endrseeAcctid", "100301011000"); // 被背书人账号
+        pkgBody.put("endrseeName", "新希望财务有限公司"); // 被背书人名称
+        pkgBody.put("endrseeAcctsvcr", "907651000043"); // 被背书人开户行行号
+        pkgBody.put("endrseeAcctsvcrName", "新希望财务有限公司"); // 被背书人开户行名称
         pkgBody.put("bizEndrsmtmk", "2"); // 转让标识
 
         jsonObject.put("reqPkgHead", reqPkgHead);

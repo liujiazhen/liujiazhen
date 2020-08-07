@@ -25,7 +25,7 @@ public class Tx3101Param {
         reqPkgHead.put("busiOrg", "ssf");
 
         pkgBody.put("draftType", "AC02"); // 票据类型
-        pkgBody.put("isseAmount", "100.03"); // 票面金额
+//        pkgBody.put("isseAmount", "100.03"); // 票面金额
         pkgBody.put("bnkEndrsmtmk", "EM01"); // 不得转让标记
         pkgBody.put("isseDate", "20200711120111"); // 出票日期
         pkgBody.put("dueDate", "20201212120101"); // 到期日

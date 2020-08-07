@@ -6,9 +6,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * 收票签收
+ * 保证签收
  */
-public class Tx3201Param {
+public class Tx3206Param {
     private static final DateTimeFormatter ISO_DATE = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 
     public static String getParam(String serialNo) {
@@ -22,8 +22,8 @@ public class Tx3201Param {
         reqPkgHead.put("appNo", "LiuHe000001");
         reqPkgHead.put("reqTime", isoDate);
         reqPkgHead.put("serialNo", serialNo);
-        reqPkgHead.put("bsnCode", "3201");
-        reqPkgHead.put("userName", "liujiazhen");
+        reqPkgHead.put("bsnCode", "3206");
+        reqPkgHead.put("userName", "1111");
         reqPkgHead.put("busiOrg", "ssf");
 
         pkgBody.put("draftNo", "290765100004320200805013903903"); // 票据号码
