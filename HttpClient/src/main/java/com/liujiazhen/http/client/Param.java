@@ -33,11 +33,11 @@ public class Param {
 //        test3103(serialNo); // 提示收票
 //        test3001(serialNo); // 背书申请 DRAFT_ENDORSEMENT
 //        test3002(serialNo); // 贴现申请
-//        test1201(serialNo); // 业务撤销
+        test1201(serialNo); // 业务撤销
 //        test3104(serialNo); // 撤票申请
 //        test3106(serialNo); // 保证申请
 //        test3107(serialNo); // 质押申请
-        test7075(serialNo, "14110225332656689259290989070194"); // 异步查询结果
+//        test7075(serialNo, "14110225332656689259290989070194"); // 异步查询结果
 //        test7076(serialNo); // 保证信息查询
 //        test7071(serialNo); // 票据基本信息查询
 //        test7072(serialNo); // 票据正面信息查询

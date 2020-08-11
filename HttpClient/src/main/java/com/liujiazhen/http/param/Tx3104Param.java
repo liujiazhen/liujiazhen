@@ -23,8 +23,8 @@ public class Tx3104Param {
         reqPkgHead.put("userName", "liujiazhen");
         reqPkgHead.put("busiOrg", "ssf");
 
-        pkgBody.put("draftNo", "1111111111"); // 票据号码
-        pkgBody.put("dstrctnDate", "20200720"); // 撤票申请日期
+        pkgBody.put("draftNo", "190765100004320200612012341055"); // 票据号码
+        pkgBody.put("dstrctnDate", "20200810"); // 撤票申请日期
         pkgBody.put("dstrctnRemark", "这个内容是撤票原因"); // 撤票原因
 
         jsonObject.put("reqPkgHead", reqPkgHead);

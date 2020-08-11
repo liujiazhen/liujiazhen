@@ -49,6 +49,13 @@ public class Tx3002Param {
         pkgBody.put("dscntbkAcctsvcr", "012200111111"); // 贴入人开户行行号
         pkgBody.put("dscntbkAcctsvcrName","新希望化工投资有限公司"); // 贴入人开户行名称
 
+        pkgBody.put("payerAcctid","25040056"); // 付息人账号
+        pkgBody.put("payerName","新希望化工投资有限公司"); // 付息人名称
+        pkgBody.put("payerAcctsvcr","100301011000"); // 付息人开户行行号
+        pkgBody.put("payerAcctsvcrName","新希望化工投资有限公司"); // 付息人开户行名称
+
+
+
         jsonObject.put("reqPkgHead", reqPkgHead);
         jsonObject.put("pkgBody", pkgBody);
 

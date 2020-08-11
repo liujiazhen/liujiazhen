@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Tx1201Param implements Cloneable {
     private static final DateTimeFormatter ISO_DATE = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
@@ -23,10 +25,10 @@ public class Tx1201Param implements Cloneable {
         reqPkgHead.put("userName", "liujiazhen");
         reqPkgHead.put("busiOrg", "ssf");
 
-        pkgBody.put("draftNo", "1111111111"); // 票据号码
-        pkgBody.put("orgnlBizKind", "001"); // 原交易类别
+        pkgBody.put("draftNo", "290765100004320200805013903903"); // 票据号码
+        pkgBody.put("orgnlBizKind", "011"); // 原交易类别
         pkgBody.put("isseAmount", "100"); // 票面金额
-        pkgBody.put("orgnlApplyDate", "20200721"); // 原申请日期
+        pkgBody.put("orgnlApplyDate", "20200810"); // 原申请日期
 
         jsonObject.put("reqPkgHead", reqPkgHead);
         jsonObject.put("pkgBody", pkgBody);
