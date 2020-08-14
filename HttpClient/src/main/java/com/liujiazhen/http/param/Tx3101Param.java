@@ -25,11 +25,11 @@ public class Tx3101Param {
         reqPkgHead.put("busiOrg", "ssf");
 
         pkgBody.put("draftType", "AC02"); // 票据类型
-//        pkgBody.put("isseAmount", "100.03"); // 票面金额
+        pkgBody.put("isseAmount", "100.03"); // 票面金额
         pkgBody.put("bnkEndrsmtmk", "EM01"); // 不得转让标记
         pkgBody.put("isseDate", "20200711120111"); // 出票日期
         pkgBody.put("dueDate", "20201212120101"); // 到期日
-//        pkgBody.put("remark", "this is remark"); // 备注
+        pkgBody.put("remark", "this is remark"); // 备注
         pkgBody.put("drwrRole", "RC01"); // 出票人类别
         pkgBody.put("drwrOrgid", "79217138-4"); // 出票人组织机构代码
         pkgBody.put("drwrAcctid", "100301011000"); // 出票人账号
@@ -48,16 +48,15 @@ public class Tx3101Param {
         pkgBody.put("accptrAcctsvcr", "907651000043"); // 承兑人开户行行号
         pkgBody.put("accptrAcctsvcrName", "新希望财务有限公司"); // 承兑人开户行名称
         pkgBody.put("txlctrctnb", "2020-01912561-001"); // 交易合同号
-        pkgBody.put("busiRemark","test 3101 出票登记");
 
-        pkgBody.put("contractFile","合同文件名（带路径）"); //
-        pkgBody.put("invoiceFile","发票文件名（带路径）"); //
-        pkgBody.put("othersFile","其它文件名（带路径）"); //
-        pkgBody.put("bakFile1","备用文件名1"); //
-        pkgBody.put("bakFile2","备用文件名2"); // 备用文件名2
-        pkgBody.put("bakFile3","备用文件名3"); // 备用文件名3
-        pkgBody.put("bakFile4","备用文件名4"); // 备用文件名4
-        pkgBody.put("bakFile5","备用文件名5"); // 备用文件名5
+        pkgBody.put("contractFile",""); //
+        pkgBody.put("invoiceFile","/upload/invoice/20200807/内部交易发票影像以及合同资料.zip"); //
+        pkgBody.put("othersFile",""); //
+        pkgBody.put("bakFile1",""); //
+        pkgBody.put("bakFile2",""); //
+        pkgBody.put("bakFile3",""); //
+        pkgBody.put("bakFile4",""); //
+        pkgBody.put("bakFile5",""); //
 
         jsonObject.put("reqPkgHead", reqPkgHead);
         jsonObject.put("pkgBody", pkgBody);

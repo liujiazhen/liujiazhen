@@ -29,11 +29,11 @@ public class Param {
         System.out.println("serialNo:" + serialNo);
 
 //        test3101(serialNo); // 出票申请
-//        test3102(serialNo); // 承兑申请
+        test3102(serialNo); // 承兑申请
 //        test3103(serialNo); // 提示收票
 //        test3001(serialNo); // 背书申请 DRAFT_ENDORSEMENT
 //        test3002(serialNo); // 贴现申请
-        test1201(serialNo); // 业务撤销
+//        test1201(serialNo); // 业务撤销
 //        test3104(serialNo); // 撤票申请
 //        test3106(serialNo); // 保证申请
 //        test3107(serialNo); // 质押申请
@@ -41,6 +41,7 @@ public class Param {
 //        test7076(serialNo); // 保证信息查询
 //        test7071(serialNo); // 票据基本信息查询
 //        test7072(serialNo); // 票据正面信息查询
+//        test7073(serialNo); // 票据背面信息查询
 //        test8001(serialNo); // 额度查询
 
 //        test3201(serialNo); // 收票签收
@@ -87,6 +88,11 @@ public class Param {
     public static void test3202(String serial) throws Exception {
         String param = Tx3202Param.getParam(serial);
         System.out.println("调用3202参数：\n" + param);
+        call(param);
+    }
+    public static void test7073(String serial) throws Exception {
+        String param = Tx7073Param.getParam(serial);
+        System.out.println("调用7073参数：\n" + param);
         call(param);
     }
     public static void test3206(String serial) throws Exception {

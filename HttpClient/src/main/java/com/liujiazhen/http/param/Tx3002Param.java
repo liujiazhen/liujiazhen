@@ -23,7 +23,7 @@ public class Tx3002Param {
         reqPkgHead.put("userName", "liujiazhen");
         reqPkgHead.put("busiOrg", "ssf");
 
-        pkgBody.put("draftNo", "1111111111"); // 票据号码
+        pkgBody.put("draftNo", ""); // 票据号码
         pkgBody.put("bnkEndrsmtmk", "100"); // 不得转让标记
         pkgBody.put("dscntApplydate", "20200720"); // 贴现申请日期
         pkgBody.put("dscntRpdmk", "232"); // 贴现种类
