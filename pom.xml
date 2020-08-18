@@ -15,6 +15,7 @@
         <module>redis</module>
         <module>model</module>
         <module>springboot</module>
+        <module>token</module>
     </modules>
 
     <dependencies>
