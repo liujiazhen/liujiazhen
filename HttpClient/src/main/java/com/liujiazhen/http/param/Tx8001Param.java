@@ -23,7 +23,7 @@ public class Tx8001Param {
         reqPkgHead.put("userName", "liujiazhen");
         reqPkgHead.put("busiOrg", "ssf");
 
-        pkgBody.put("companyName", "新希望六和饲料股份有限公司莱州分公司");
+        pkgBody.put("companyName", "新希望化工投资有限公司");
 
         jsonObject.put("reqPkgHead", reqPkgHead);
         jsonObject.put("pkgBody", pkgBody);

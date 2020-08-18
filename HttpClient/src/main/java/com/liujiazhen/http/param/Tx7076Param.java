@@ -23,7 +23,7 @@ public class Tx7076Param {
         reqPkgHead.put("userName", "liujiazhen");
         reqPkgHead.put("busiOrg", "ssf");
 
-        pkgBody.put("draftNo", "190765100004320151231038521481"); // 票据号码
+//        pkgBody.put("draftNo", "190765100004320151231038521481"); // 票据号码
 //        pkgBody.put("guarnteeDate", "20200701"); // 业务申请日期
 //        pkgBody.put("sgnupmk", "1"); // 签收标志
         pkgBody.put("pageId","1");
