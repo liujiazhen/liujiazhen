@@ -40,8 +40,8 @@ public class Param {
 //        test7075(serialNo, "14110225332656689259290989070194"); // 异步查询结果
 //        test7076(serialNo); // 保证信息查询
 //        test7071(serialNo); // 票据基本信息查询
-//        test7072(serialNo); // 票据正面信息查询
-        test7073(serialNo); // 票据背面信息查询
+        test7072(serialNo); // 票据正面信息查询
+//        test7073(serialNo); // 票据背面信息查询
 //        test8001(serialNo); // 额度查询
 
 //        test3201(serialNo); // 收票签收

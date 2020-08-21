@@ -17,6 +17,7 @@
         <module>springboot</module>
         <module>token</module>
         <module>ireport</module>
+        <module>poi</module>
     </modules>
 
     <dependencies>

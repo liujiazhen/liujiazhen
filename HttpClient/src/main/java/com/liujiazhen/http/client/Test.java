@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class Test {
     public static void main(String[] args) {
 //        test1();
-        test2("399");
+        test2("399.89");
         String[] strings = new String[12];
         // 399.3
         // {"","","","","","","￥","3","9","9","3","0"}

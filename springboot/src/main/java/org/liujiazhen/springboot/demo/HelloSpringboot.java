@@ -20,8 +20,9 @@ public class HelloSpringboot {
         String path1 = ClassUtils.getDefaultClassLoader().getResource("Application.yml").getPath();
         LOG.info(path1);
 
-        String rootPath = Thread.currentThread().getContextClassLoader().getResource("Application.yml").getPath();
+        String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
         LOG.info(rootPath);
+        
         String path = Class.class.getClassLoader().getResource("").getPath();
         LOG.info("PATH:" + path);
         rootPath = rootPath.substring(1,rootPath.indexOf("WEB-INF"));
