@@ -16,6 +16,7 @@
         <module>model</module>
         <module>springboot</module>
         <module>token</module>
+        <module>ireport</module>
     </modules>
 
     <dependencies>

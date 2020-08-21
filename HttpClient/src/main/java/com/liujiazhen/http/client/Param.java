@@ -24,8 +24,8 @@ import java.nio.charset.StandardCharsets;
 public class Param {
     private static boolean REMOTE;
     public static void main(String[] args) throws Exception {
-        REMOTE = true; // true为测试远程
-        String serialNo = RandomUtils.getRandomNumString(32);
+        REMOTE = false; // true为测试远程
+        String serialNo = RandomUtils.getRandomNumString(22);
         System.out.println("serialNo:" + serialNo);
 
 //        test3101(serialNo); // 出票申请
@@ -41,8 +41,8 @@ public class Param {
 //        test7076(serialNo); // 保证信息查询
 //        test7071(serialNo); // 票据基本信息查询
 //        test7072(serialNo); // 票据正面信息查询
-//        test7073(serialNo); // 票据背面信息查询
-        test8001(serialNo); // 额度查询
+        test7073(serialNo); // 票据背面信息查询
+//        test8001(serialNo); // 额度查询
 
 //        test3201(serialNo); // 收票签收
 //        test3204(serialNo); // 承兑签收
