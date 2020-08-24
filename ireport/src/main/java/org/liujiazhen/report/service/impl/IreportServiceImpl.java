@@ -1,23 +1,21 @@
-package org.liujiazhen.report;
+package org.liujiazhen.report.service.impl;
 
-import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperRunManager;
+import org.liujiazhen.report.service.IreportService;
+import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Vector;
 
-public class Test {
-    public static void main(String[] args) throws JRException {
-//        front();
-        back();
-    }
-
-    private static void back() throws JRException {
+@Service
+public class IreportServiceImpl implements IreportService {
+    @Override
+    public byte[] back() throws JRException {
         String source = "C:/Users/Administrator/Documents/jasper/source/ecd-draft-info-back-report.jasper";
-        String dest = "C:/Users/Administrator/Documents/jasper/source/result/back-result.pdf";
         HashMap<String, Object> map = new HashMap<>();
         map.put("groupId", "20200101");
         map.put("displayDate", "2020-08-18"); // 显示日期
@@ -27,12 +25,11 @@ public class Test {
         map.put("backImage", "D:\\develop\\iReport\\jasperParam\\yinc_back.jpg"); // 背景图片路径，绝对路径
         map.put("isShowBack", "true"); // 是否显示背景图片，true或false
         map.put("fulldraftNo","130049100018320170927114080686"); // 1
-        JasperRunManager.runReportToPdfFile(source, dest, map, get());
+        return JasperRunManager.runReportToPdf(source, map, get());
     }
-
-    private static void front() throws JRException {
+    @Override
+    public byte[] front() throws JRException {
         String source = "C:/Users/Administrator/Documents/jasper/source/ecd-commercial-draft-info-report.jasper";
-        String dest = "C:/Users/Administrator/Documents/jasper/source/result/front-result.pdf";
         HashMap<String, Object> map = new HashMap<>();
         map.put("displayDate", "2020-08-18"); // 显示日期
         map.put("title", "电  子  银  行  承  兑  汇  票"); // 票据标题
@@ -86,8 +83,7 @@ public class Test {
         map.put("backImage", "D:\\develop\\iReport\\jasperParam\\yinc.jpg"); // 背景图片路径，绝对路径
         map.put("isShowBack", "true"); // 是否显示背景图片，true或false
 
-//        JasperRunManager.runReportToPdfFile(source, dest, map, new JREmptyDataSource());
-        byte[] bytes = JasperRunManager.runReportToPdf(source, map, new JREmptyDataSource());
+        return JasperRunManager.runReportToPdf(source, map, new JREmptyDataSource());
     }
 
     private static Connection get() {

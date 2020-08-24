@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class PoiTest {
     public static void main(String[] args) {
-        String url = "D:/tmp/MyExcel.xlsx";
+        String url = "D:/tmp/MyExcel2.xlsx";
         FileInputStream fs;
         try {
             fs = new FileInputStream(url);
@@ -23,10 +23,11 @@ public class PoiTest {
             Sheet sheet = wb.getSheetAt(0);
 
             FileOutputStream out = new FileOutputStream(url);
-            for (int i = 0; i < 20; i++) {
+            for (int i = 0; i < 10; i++) {
                 sheet.shiftRows(0, sheet.getLastRowNum(), 1);
-                Row row = sheet.createRow((short) (i));
+                Row row = sheet.createRow((short) (0));
                 row.createCell(0).setCellValue("刘加振" + i);
+                row.createCell(1).setCellValue("第二列");
             }
 
             out.flush();
