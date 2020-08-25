@@ -17,7 +17,7 @@ public class IreportController {
     private IreportService ireportService;
 
     @RequestMapping("/front")
-    public String front(HttpServletRequest request, HttpServletResponse response) throws JRException {
+    public String front(String draft, HttpServletResponse response) throws JRException {
         byte[] front = ireportService.front();
 
         if (front == null) {
@@ -39,7 +39,7 @@ public class IreportController {
     }
 
     @RequestMapping("/back")
-    public String back(HttpServletRequest request, HttpServletResponse response) throws JRException {
+    public String back(String draft, HttpServletResponse response) throws JRException {
         byte[] back = ireportService.back();
         if (back == null) {
             response.setContentType("text/javascript; charset=utf-8");
