@@ -1,8 +1,7 @@
-package org.liujiazhen.springboot.demo;
+package org.liujiazhen.springboot.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpRequest;
 import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-public class HelloSpringboot {
+public class HelloSpringbootController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(HelloSpringboot.class);
+    private static final Logger LOG = LoggerFactory.getLogger(HelloSpringbootController.class);
 
     @RequestMapping("/hello")
     public String say(HttpServletRequest request) {
@@ -22,7 +21,7 @@ public class HelloSpringboot {
 
         String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
         LOG.info(rootPath);
-        
+
         String path = Class.class.getClassLoader().getResource("").getPath();
         LOG.info("PATH:" + path);
         rootPath = rootPath.substring(1,rootPath.indexOf("WEB-INF"));
