@@ -14,21 +14,27 @@ import java.util.HashMap;
 @Service
 public class IreportServiceImpl implements IreportService {
     @Override
-    public byte[] back() throws JRException {
+    public byte[] back(String draftNo) throws JRException {
+        draftNo = draftNo.charAt(0) + " "
+                + draftNo.substring(1, 13) + " "
+                + draftNo.substring(13, 21) + " "
+                + draftNo.substring(21, 29) + " "
+                + draftNo.charAt(29);
         String source = "C:/Users/Administrator/Documents/jasper/source/ecd-draft-info-back-report.jasper";
         HashMap<String, Object> map = new HashMap<>();
         map.put("groupId", "20200101");
         map.put("displayDate", "2020-08-18"); // 显示日期
         map.put("title","电  子  银  行  承  兑  汇  票"); // 1
-        map.put("imageParam", "D:\\develop\\iReport\\jasperParam\\ECDS_LOGO.gif"); // logo路径，绝对路径
+        map.put("imageParam", "D:/develop/iReport/jasperParam/ECDS_LOGO.gif"); // logo路径，绝对路径
         map.put("isShowImage", "true"); // 是否显示logo图片，true或false
-        map.put("backImage", "D:\\develop\\iReport\\jasperParam\\yinc_back.jpg"); // 背景图片路径，绝对路径
+        map.put("backImage", "D:/develop/iReport/jasperParam/yinc_back.jpg"); // 背景图片路径，绝对路径
         map.put("isShowBack", "true"); // 是否显示背景图片，true或false
-        map.put("fulldraftNo","130049100018320170927114080686"); // 1
+        map.put("fulldraftNo",draftNo);
         return JasperRunManager.runReportToPdf(source, map, get());
     }
+
     @Override
-    public byte[] front() throws JRException {
+    public byte[] front(String draftNo) throws JRException {
         String source = "C:/Users/Administrator/Documents/jasper/source/ecd-commercial-draft-info-report.jasper";
         HashMap<String, Object> map = new HashMap<>();
         map.put("displayDate", "2020-08-18"); // 显示日期
@@ -36,7 +42,12 @@ public class IreportServiceImpl implements IreportService {
         map.put("isseDate", "2020-08-18"); // 出票日期
         map.put("dueDate", "2020-08-18"); // 汇票到期日
         map.put("draftStatus", "110106买断式贴现已签收"); // 票据状态
-        map.put("fulldraftNo", "130049100018320170927114080686"); // 票据号码
+        draftNo = draftNo.charAt(0) + " "
+                + draftNo.substring(1, 13) + " "
+                + draftNo.substring(13, 21) + " "
+                + draftNo.substring(21, 29) + " "
+                + draftNo.charAt(29);
+        map.put("fulldraftNo", draftNo); // 票据号码
         map.put("drwrName", "中建二局第二建筑队"); // 出票人全称
         map.put("drwrAcctid", "6227002349193167303"); // 出票人账号
         map.put("drwrAcctsvcrName", "中国建设银行章丘支行"); // 出票人开户行
@@ -78,15 +89,15 @@ public class IreportServiceImpl implements IreportService {
         map.put("accptrCdtratgAgcy", "11"); // 承兑人评级机构
         map.put("accptrCdtratgs", "88"); // 承兑人信用等级
         map.put("accptrCdtratgDuedate", "2020-08-18"); // 承兑人保证日期
-        map.put("imageParam", "D:\\develop\\iReport\\jasperParam\\ECDS_LOGO.gif"); // logo路径，绝对路径
+        map.put("imageParam", "D:/develop/iReport/jasperParam/ECDS_LOGO.gif"); // logo路径，绝对路径
         map.put("isShowImage", "true"); // 是否显示logo图片，true或false
-        map.put("backImage", "D:\\develop\\iReport\\jasperParam\\yinc.jpg"); // 背景图片路径，绝对路径
+        map.put("backImage", "D:/develop/iReport/jasperParam/yinc.jpg"); // 背景图片路径，绝对路径
         map.put("isShowBack", "true"); // 是否显示背景图片，true或false
 
         return JasperRunManager.runReportToPdf(source, map, new JREmptyDataSource());
     }
 
-    private static Connection get() {
+    private Connection get() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
         } catch (ClassNotFoundException e) {
