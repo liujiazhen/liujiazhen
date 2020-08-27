@@ -13,26 +13,32 @@ public class GraphController {
     public String graphEcharts() {
         return "graph_echarts";
     }
+
     @RequestMapping("/graph_flot")
     public String graphFlot() {
         return "graph_flot";
     }
+
     @RequestMapping("/graph_morris")
     public String graphMorris() {
         return "graph_morris";
     }
+
     @RequestMapping("/graph_rickshaw")
     public String graphRickshaw() {
         return "graph_rickshaw";
     }
+
     @RequestMapping("/graph_peity")
     public String graphPeity() {
         return "graph_peity";
     }
+
     @RequestMapping("/graph_sparkline")
     public String graphSparkline() {
         return "graph_sparkline";
     }
+
     @RequestMapping("/graph_metrics")
     public String graphMetrics() {
         return "graph_metrics";
