@@ -17,6 +17,7 @@
         <module>token</module>
         <module>ireport</module>
         <module>poi</module>
+        <module>mybatis</module>
     </modules>
 
     <dependencies>
