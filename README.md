@@ -32,7 +32,7 @@ Here are some ideas to get you started:
 [![](https://img.shields.io/badge/-知乎-fff?style=flat-square&logo=Zhihu&labelColor=ffffff&color=fff)](https://www.zhihu.com/people/liu-jia-zhen-67)
 
 -   😄Read more about my [Blog](http://www.liujiazhen.com/)
--   👯Follow me on [掘金](https://juejin.cn/user/12345646) , [CSDN](https://blog.csdn.net/weixin_42038245) , [Twitter](https://twitter.com/Sparrow_wrd) or [weibo](https://weibo.com/liujiazhen)
+-   👯Follow me on [掘金](https://juejin.cn/user/12345646) , [CSDN](https://blog.csdn.net/12345646) , [Twitter](https://twitter.com/liujiazhen) or [weibo](https://weibo.com/liujiazhen)
 
 ![](https://img.shields.io/badge/-Nodejs-43853d?style=flat-square&logo=Node.js&logoColor=white)
 ![](https://img.shields.io/badge/-WebRTC-008000?style=flat-square&logo=WebRTC&labelColor=90EE90&color=fff)
