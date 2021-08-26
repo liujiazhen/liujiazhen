@@ -25,7 +25,7 @@ Here are some ideas to get you started:
 
 ##### A lovely Java developer based in China.
 
-[![](https://img.shields.io/badge/-刘加振-E6162D?style=flat-square&labelColor=9D1620&logo=Sina-Weibo&logoColor=white)](https://weibo.com/liujiazhen)
+[![](https://img.shields.io/badge/-刘加振-E6162D?style=flat-square&labelColor=9D1620&logo=Sina-Weibo&logoColor=white)](https://weibo.com/3891215380)
 [![](https://img.shields.io/badge/-Sparrow_wrd-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white)](https://twitter.com/12345646)
 [![](https://img.shields.io/badge/掘金-blue?style=flat-square)](https://juejin.cn/user/12345646)
 [![](https://img.shields.io/badge/-CSDN-FF3C00?style=flat-square)](https://blog.csdn.net/12345646)
