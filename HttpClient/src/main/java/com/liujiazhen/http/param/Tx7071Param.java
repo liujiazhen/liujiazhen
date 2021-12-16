@@ -23,7 +23,7 @@ public class Tx7071Param {
         reqPkgHead.put("userName", "liujiazhen");
         reqPkgHead.put("busiOrg", "ssf");
 
-        pkgBody.put("isseAmount", "100");
+//        pkgBody.put("isseAmount", "100");
 
         jsonObject.put("reqPkgHead", reqPkgHead);
         jsonObject.put("pkgBody", pkgBody);

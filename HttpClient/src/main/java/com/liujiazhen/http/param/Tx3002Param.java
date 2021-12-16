@@ -23,6 +23,60 @@ public class Tx3002Param {
         reqPkgHead.put("userName", "liujiazhen");
         reqPkgHead.put("busiOrg", "ssf");
 
+        pkgBody.put("draftNo", "190765100004320200901014630460"); // 票据号码
+        pkgBody.put("bnkEndrsmtmk", "EM00"); // 不得转让标记
+        pkgBody.put("dscntApplydate", "20200909"); // 贴现申请日期
+        pkgBody.put("dscntRpdmk", "RM00"); // 贴现种类
+        pkgBody.put("dscntIntrstrate", "0.3"); // 贴现利率%(年)
+        pkgBody.put("dscntInterest", "40"); // 贴现利息
+        pkgBody.put("dscntAmt", "460"); // 贴现实付金额
+        pkgBody.put("dscntSttlmmk", "SM01"); // 线上清算标记
+//        pkgBody.put("dscntRpdopendt", "20200720"); // 赎回开放日
+//        pkgBody.put("dscntRpdduedt", "20200720"); // 赎回截止日
+//        pkgBody.put("dscntRpdintrstrate", "3"); // 贴现赎回利率%(年)
+//        pkgBody.put("dscntRpdamt", "600"); // 贴现赎回金额
+        pkgBody.put("bizEndrsmtmk", "EM00"); // 业务转让标记
+        pkgBody.put("aoaccninfAcctid", "100301011000"); // 入账账号
+        pkgBody.put("aoaccninfAcctsvcr", "907651000043"); // 入账开户行号
+        pkgBody.put("dscntpropsrRole", "RC01"); // 贴出人类别
+        pkgBody.put("dscntpropsrName", "新希望化工投资有限公司"); // 贴出人名称
+        pkgBody.put("dscntpropsrCmonid", "79217138-4"); // 贴出人组织机构代码
+        pkgBody.put("dscntpropsrAcctid", "100301011000"); // 贴出人账号
+        pkgBody.put("dscntpropsrAcctsvcr", "907651000043"); // 贴出人开户行行号
+        pkgBody.put("dscntpropsrAcctsvcrName", "新希望财务有限公司"); // 贴出人开户行名称
+        pkgBody.put("dscntbkAcctid", "0"); // 贴入人账号
+        pkgBody.put("dscntbkName", "新希望财务有限公司"); // 贴入人名称
+        pkgBody.put("dscntbkAcctsvcr", "907651000043"); // 贴入人开户行行号
+        pkgBody.put("dscntbkAcctsvcrName","新希望财务有限公司"); // 贴入人开户行名称
+
+        pkgBody.put("payerAcctid","25040056"); // 付息人账号
+        pkgBody.put("payerName","新希望化工投资有限公司"); // 付息人名称
+        pkgBody.put("payerAcctsvcr","100301011000"); // 付息人开户行行号
+        pkgBody.put("payerAcctsvcrName","新希望化工投资有限公司"); // 付息人开户行名称
+
+
+
+        jsonObject.put("reqPkgHead", reqPkgHead);
+        jsonObject.put("pkgBody", pkgBody);
+
+        return jsonObject.toJSONString();
+    }
+
+    public static String getParam2(String serialNo) {
+        String isoDate = ISO_DATE.format(LocalDateTime.now());
+
+        JSONObject jsonObject = new JSONObject();
+        JSONObject reqPkgHead = new JSONObject();
+        JSONObject pkgBody = new JSONObject();
+
+        reqPkgHead.put("version", "1.0.0");
+        reqPkgHead.put("appNo", "LiuHe000001");
+        reqPkgHead.put("reqTime", isoDate);
+        reqPkgHead.put("serialNo", serialNo);
+        reqPkgHead.put("bsnCode", "3002");
+        reqPkgHead.put("userName", "liujiazhen");
+        reqPkgHead.put("busiOrg", "ssf");
+
         pkgBody.put("draftNo", ""); // 票据号码
         pkgBody.put("bnkEndrsmtmk", "100"); // 不得转让标记
         pkgBody.put("dscntApplydate", "20200720"); // 贴现申请日期

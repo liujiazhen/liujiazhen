@@ -1,24 +1,58 @@
 package com.liujiazhen.http.client;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+
 import java.math.BigDecimal;
 import java.text.Format;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 public class Test {
-    public static void main(String[] args) {
-//        test1();
-        test2("399.89");
-        String[] strings = new String[12];
-        // 399.3
-        // {"","","","","","","￥","3","9","9","3","0"}
+    static class Student{
+        private String name;
+        private String age;
+        private Date date;
+        public Student(String name, String age) {
+            this.name = name;
+            this.age = age;
+        }
 
-        // 399
-        // {"","","","","","","￥","3","9","9","0","0"}
-
-        // 399.11
-        // {"","","","","","","￥","3","9","9","1","1"}
     }
 
+    public static void main(String[] args) {
+        Teacher2 liu = new Teacher2();
+        liu.setName("22");
+        liu.setDate(LocalDate.now());
+        String s = JSON.toJSONString(liu);
+
+        System.out.println(s);
+
+
+
+        JSONObject jsonObject = JSONObject.parseObject(s);
+        Teacher2 teacher = JSONObject.toJavaObject(jsonObject, Teacher2.class);
+        System.out.println(teacher);
+
+
+    }
+
+    public static boolean maxMin30NumbericText(String src) {
+        if (src == null) {
+            return true;
+        } else {
+            for (int i = src.length(); --i >= 0; ) {
+                int chr = src.charAt(i);
+                if (chr < 48 || chr > 57) {
+                    return false;
+                }
+            }
+            return src.length() == 30;
+        }
+    }
     static void test2(String s) {
         Double value = Double.valueOf(s);
         String s1 = "￥" + String.format("%.2f", value);
@@ -71,4 +105,100 @@ public class Test {
             System.out.print(strs[i]);
         }
     }
+}
+class Teacher{
+    private String name;
+    private Date date;
+
+    public Teacher() {
+    }
+
+    public Teacher(String name, Date date) {
+        this.name = name;
+        this.date = date;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "name='" + name + '\'' +
+                ", date=" + date +
+                '}';
+    }
+}
+
+class Teacher2{
+    private String name;
+    private LocalDate date;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher2{" +
+                "name='" + name + '\'' +
+                ", date=" + date +
+                '}';
+    }
+}
+
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode root = new ListNode(0);
+        ListNode cursor = root;
+        int carry = 0;
+        while(l1 != null || l2 != null || carry != 0) {
+            int l1Val = l1 != null ? l1.val : 0;
+            int l2Val = l2 != null ? l2.val : 0;
+            int sumVal = l1Val + l2Val + carry;
+            carry = sumVal / 10;
+
+            ListNode sumNode = new ListNode(sumVal % 10);
+            cursor.next = sumNode;
+            cursor = sumNode;
+
+            if(l1 != null) l1 = l1.next;
+            if(l2 != null) l2 = l2.next;
+        }
+
+        return root.next;
+    }
+}
+
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode() {}
+    ListNode(int val) { this.val = val; }
+    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
 }

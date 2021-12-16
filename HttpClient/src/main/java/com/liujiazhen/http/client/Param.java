@@ -23,12 +23,17 @@ import java.nio.charset.StandardCharsets;
 
 public class Param {
     private static boolean REMOTE;
+    // 平台公钥路径
+    private static final String ssfPukPath = "F:/key/public-rsa.cer";
+    // 调用方私钥路径
+    private static final String userCertPath = "F:/key/liuhe-rsa.pfx";
+    private static final String serverCrt = "D:/tmp/server.crt";
     public static void main(String[] args) throws Exception {
         REMOTE = false; // true为测试远程
-        String serialNo = RandomUtils.getRandomNumString(22);
+        String serialNo = RandomUtils.getRandomNumString(32);
         System.out.println("serialNo:" + serialNo);
 
-//        test3101(serialNo); // 出票申请
+//        test3101(serialNo); // 出票登记
 //        test3102(serialNo); // 承兑申请
 //        test3103(serialNo); // 提示收票
 //        test3001(serialNo); // 背书申请 DRAFT_ENDORSEMENT
@@ -37,10 +42,10 @@ public class Param {
 //        test3104(serialNo); // 撤票申请
 //        test3106(serialNo); // 保证申请
 //        test3107(serialNo); // 质押申请
-//        test7075(serialNo, "14110225332656689259290989070194"); // 异步查询结果
+        test7075(serialNo, "54195634131171817480545691650367"); // 异步查询结果
 //        test7076(serialNo); // 保证信息查询
 //        test7071(serialNo); // 票据基本信息查询
-        test7072(serialNo); // 票据正面信息查询
+//        test7072(serialNo); // 票据正面信息查询
 //        test7073(serialNo); // 票据背面信息查询
 //        test8001(serialNo); // 额度查询
 
@@ -64,9 +69,9 @@ public class Param {
         reqPkgHead.put("userName", "Liu Zen");
         reqPkgHead.put("busiOrg", "ssf1");
 
-        pkgBody.put("bizKind", "AC02");
+        pkgBody.put("bizKind", "BK01");
         pkgBody.put("transNo", bsuiNo);
-        pkgBody.put("msgType", "this is msgType");
+        pkgBody.put("msgType", "001");
         pkgBody.put("txTransdate", "20200715");
 
         jsonObject.put("reqPkgHead", reqPkgHead);
@@ -192,10 +197,7 @@ public class Param {
      * @throws Exception IO异常、加解密异常
      */
     public static String call(String json) throws Exception {
-        // 平台公钥路径
-        String ssfPukPath = "F:/key/public-rsa.cer";
-        // 调用方私钥路径
-        String userCertPath = "F:/key/liuhe-rsa.pfx";
+
 
         // 1.参数签名并加密
         // (1)要加密的Json (2)调用方私钥证书 (3)私钥密码 (4)平台方公钥
@@ -208,11 +210,11 @@ public class Param {
         CloseableHttpClient httpClient;
         HttpPost httpPost;
         if (REMOTE) {
-            httpClient = HttpsClientUtil.getHttpClient(true, true, "D:/tmp/server.crt");
+            httpClient = HttpsClientUtil.getHttpClient(true, true, serverCrt);
             httpPost = new HttpPost("https://obsapi.nhgfc.com/connector/recvGateway/service"); // 远程测试
         } else {
             httpClient = HttpClientBuilder.create().build();
-            httpPost = new HttpPost("http://127.0.0.1:8082/server-connector/recvGateway/service"); // 本地测试
+            httpPost = new HttpPost("http://127.0.0.1:8088/server-connector/recvGateway/service"); // 本地测试
         }
 
         httpPost.addHeader("Content-Type", "application/json");
