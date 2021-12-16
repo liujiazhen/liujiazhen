@@ -1,0 +1,13 @@
+package org.liujiazhen.zookeeper;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Test {
+    public static void main(String[] args) {
+        Map<String, String> map = new HashMap<>();
+        map.put("y", null);
+        String key = map.get("key");
+        System.out.println(key);
+    }
+}

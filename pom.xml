@@ -18,6 +18,7 @@
         <module>ireport</module>
         <module>poi</module>
         <module>mybatis</module>
+        <module>zookeeper</module>
     </modules>
 
     <dependencies>

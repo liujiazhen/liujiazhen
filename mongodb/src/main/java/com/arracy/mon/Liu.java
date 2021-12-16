@@ -1,9 +1,13 @@
 package com.arracy.mon;
 
-public class Liu {
+import java.util.HashMap;
 
-    public static void main(String[] args) throws CloneNotSupportedException {
-        Liu arrayc = new Liu();
-        Object clone = arrayc.clone();
+public class Liu implements Cloneable {
+
+    public static void main(String[] args) {
+        HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
+        String sfs = (String) objectObjectHashMap.get("sfs");
+
+        System.out.println(sfs);
     }
 }
