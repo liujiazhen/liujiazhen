@@ -16,9 +16,6 @@ import java.util.List;
 public class JSONToExcel {
     public static void main(String[] args) throws IOException {
         createExcel();
-
-
-
     }
 
     public static List<SalaryModel> getJson() throws IOException {
@@ -57,11 +54,7 @@ public class JSONToExcel {
             row.createCell(9).setCellValue(model.getIncomeTax());
             row.createCell(10).setCellValue(model.getPayWages());
             row.createCell(11).setCellValue(model.getRemark());
-            row.createCell(12).setCellValue(model.getMonth());
-            row.createCell(13).setCellValue(model.getMonth());
-            row.createCell(14).setCellValue(model.getMonth());
-            row.createCell(15).setCellValue(model.getMonth());
-            row.createCell(16).setCellValue(model.getUserName());
+            row.createCell(12).setCellValue(model.getUserName());
         }
 
         sheet.setColumnWidth(10, 1411);
@@ -69,13 +62,6 @@ public class JSONToExcel {
         wb.write(fileOut);
         fileOut.close();
         wb.close();
-
-//        // 需要额外引入poi-ooxml-3.14-20160307.jar， xmlbeans-2.6.0.jar， poi-ooxml-schemas-3.14-20160307.jar
-//        Workbook wb2 = new XSSFWorkbook();
-//        FileOutputStream fileOut2 = new FileOutputStream("excel/workbook.xlsx");
-//        wb2.write(fileOut2);
-//        fileOut2.close();
-//        wb2.close();
     }
 
     public static void createSheetTitle(Row row) {
@@ -91,11 +77,7 @@ public class JSONToExcel {
         row.createCell(8).setCellValue("扣");
         row.createCell(9).setCellValue("税");
         row.createCell(10).setCellValue("发");
-        row.createCell(12).setCellValue("注");
-        row.createCell(13).setCellValue("注");
-        row.createCell(14).setCellValue("注");
-        row.createCell(15).setCellValue("注");
-        row.createCell(16).setCellValue("人");
-
+        row.createCell(11).setCellValue("注");
+        row.createCell(12).setCellValue("人");
     }
 }
