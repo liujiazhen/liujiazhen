@@ -22,11 +22,11 @@ public class HelloSpringbootController {
         String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
         LOG.info(rootPath);
 
-        String path = Class.class.getClassLoader().getResource("").getPath();
-        LOG.info("PATH:" + path);
-        rootPath = rootPath.substring(1,rootPath.indexOf("WEB-INF"));
-
-        LOG.info(rootPath);
+//        String path = Class.class.getClassLoader().getResource("").getPath();
+//        LOG.info("PATH:" + path);
+//        rootPath = rootPath.substring(1,rootPath.indexOf("WEB-INF"));
+//
+//        LOG.info(rootPath);
         LOG.info("heeeeeeeeeeeeeeeeeeeeeeeeeow");
         LOG.warn("warn");
         LOG.debug("debug");

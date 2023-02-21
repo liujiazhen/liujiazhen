@@ -1,0 +1,6 @@
+<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+    <!-- 最大连接数-->
+    <property name="maxTotal" value="50"></property>
+    <property name="maxIdle" value="5"></property>
+    <!-- 这里只是Spring整合Redis测试，配两个做个样子就得了-->
+</bean>

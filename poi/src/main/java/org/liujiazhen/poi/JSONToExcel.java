@@ -16,8 +16,8 @@ import java.util.List;
 public class JSONToExcel {
     public static void main(String[] args) throws IOException {
         createExcel();
-
-
+//        File file = new File("D:/YongHu/zhuomian/JSON.txt");
+//        System.out.println(file.getAbsolutePath());
     }
 
     public static List<SalaryModel> getJson() throws IOException {
@@ -52,11 +52,10 @@ public class JSONToExcel {
             row.createCell(5).setCellValue(model.getBase() + model.getSubsidy() + model.getReward() - model.getDeduction());
             row.createCell(6).setCellValue(model.getInsurance());
             row.createCell(7).setCellValue(model.getFunds());
-            row.createCell(8).setCellValue(model.getSpecialDeduction());
-            row.createCell(9).setCellValue(model.getIncomeTax());
-            row.createCell(10).setCellValue(model.getPayWages());
-            row.createCell(11).setCellValue(model.getRemark());
-            row.createCell(12).setCellValue(model.getUserName());
+            row.createCell(8).setCellValue(model.getIncomeTax());
+            row.createCell(9).setCellValue(model.getPayWages());
+            row.createCell(10).setCellValue(model.getRemark());
+            row.createCell(11).setCellValue(model.getUserName());
         }
 
         sheet.setColumnWidth(10, 1411);
@@ -76,10 +75,9 @@ public class JSONToExcel {
         row.createCell(5).setCellValue("应");
         row.createCell(6).setCellValue("保");
         row.createCell(7).setCellValue("公");
-        row.createCell(8).setCellValue("扣");
-        row.createCell(9).setCellValue("税");
-        row.createCell(10).setCellValue("发");
-        row.createCell(11).setCellValue("注");
-        row.createCell(12).setCellValue("人");
+        row.createCell(8).setCellValue("税");
+        row.createCell(9).setCellValue("发");
+        row.createCell(10).setCellValue("注");
+        row.createCell(11).setCellValue("人");
     }
 }
